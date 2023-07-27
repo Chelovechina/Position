@@ -1,4 +1,13 @@
+import {
+  IAccountNumber,
+  ICurrency,
+  IFillingState,
+  IPaymentMethod,
+} from "@/types";
+
 export default {
+  namespace: true,
+
   state: {
     currency: [
       {
@@ -84,7 +93,21 @@ export default {
       },
     ],
   },
-  getters: {},
+  getters: {
+    getCurrency: (state: IFillingState) => (id: number) => {
+      return state.currency.find((currency: ICurrency) => currency._id === id);
+    },
+    getAccountNumber: (state: IFillingState) => (id: number) => {
+      return state.accountNumber.find(
+        (accountNumber: IAccountNumber) => accountNumber._id === id
+      );
+    },
+    getPaymentMethod: (state: IFillingState) => (id: number) => {
+      return state.paymentMethod.find(
+        (paymentMethod: IPaymentMethod) => paymentMethod._id === id
+      );
+    },
+  },
   mutations: {},
   actions: {},
   modules: {},
