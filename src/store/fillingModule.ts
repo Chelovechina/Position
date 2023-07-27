@@ -9,7 +9,7 @@ export default {
   namespace: true,
 
   state: {
-    currency: [
+    currencies: [
       {
         _id: 1,
         caption: "EUR",
@@ -61,7 +61,7 @@ export default {
         toEur: 0.002,
       },
     ],
-    accountNumber: [
+    accounts: [
       {
         _id: 1,
         caption: "Microsoft",
@@ -78,7 +78,7 @@ export default {
         accountNumber: 92538215,
       },
     ],
-    paymentMethod: [
+    payments: [
       {
         _id: 1,
         caption: "Credit Card",
@@ -95,15 +95,17 @@ export default {
   },
   getters: {
     getCurrency: (state: IFillingState) => (id: number) => {
-      return state.currency.find((currency: ICurrency) => currency._id === id);
+      return state.currencies.find(
+        (currency: ICurrency) => currency._id === id
+      );
     },
     getAccountNumber: (state: IFillingState) => (id: number) => {
-      return state.accountNumber.find(
+      return state.accounts.find(
         (accountNumber: IAccountNumber) => accountNumber._id === id
       );
     },
     getPaymentMethod: (state: IFillingState) => (id: number) => {
-      return state.paymentMethod.find(
+      return state.payments.find(
         (paymentMethod: IPaymentMethod) => paymentMethod._id === id
       );
     },

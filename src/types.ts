@@ -25,7 +25,7 @@ export interface IPaymentMethod {
 }
 
 export interface IFillingState {
-  currency: ICurrency[];
-  accountNumber: IAccountNumber[];
-  paymentMethod: IPaymentMethod[];
+  currencies: ICurrency[];
+  accounts: IAccountNumber[];
+  payments: IPaymentMethod[];
 }
