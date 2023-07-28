@@ -34,6 +34,16 @@ export default createStore({
         (position: IPosition) => position._id !== id
       );
     },
+    addPosition: (state: any, newPosition: IPosition) => {
+      const index = state.positions.findIndex(
+        (position: IPosition) => position._id === newPosition._id
+      );
+      index !== -1
+        ? (state.positions[index] = newPosition)
+        : state.positions.push(newPosition);
+
+      state.creating.isModalOpen = false;
+    },
   },
   actions: {},
   modules: {

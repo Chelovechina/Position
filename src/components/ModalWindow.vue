@@ -47,7 +47,9 @@
           class="w-[80px] bg-red-500 rounded py-1 text-center text-white font-medium">
           Cancel
         </button>
-        <button class="w-[80px] bg-green-500 rounded py-1 text-center text-white font-medium">
+        <button @click="
+          $store.commit('addPosition', $store.state.creating.currentPosition)
+          " class="w-[80px] bg-green-500 rounded py-1 text-center text-white font-medium">
           Save
         </button>
       </div>
