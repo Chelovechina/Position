@@ -29,3 +29,9 @@ export interface IFillingState {
   accounts: IAccountNumber[];
   payments: IPaymentMethod[];
 }
+
+export interface ICreatingState {
+  isModalOpen: boolean;
+  isNew: boolean;
+  currentPosition: IPosition;
+}

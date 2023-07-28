@@ -1,10 +1,10 @@
 import { IPosition } from "@/types";
 import { createStore } from "vuex";
+import creatingModule from "./creatingModule";
 import fillingModule from "./fillingModule";
 
 export default createStore({
   state: {
-    isModalOpen: false,
     totalAmount: 253252.0,
     positions: [
       {
@@ -34,17 +34,10 @@ export default createStore({
         (position: IPosition) => position._id !== id
       );
     },
-    closeModal: (state) => {
-      console.log('close')
-      state.isModalOpen = false;
-    },
-    openModal: (state) => {
-      console.log('open')
-      state.isModalOpen = true;
-    },
   },
   actions: {},
   modules: {
     filling: fillingModule,
+    creating: creatingModule,
   },
 });

@@ -39,8 +39,11 @@
 
     <div class="flex gap-3">
       <button @click="$store.commit('deletePosition', position._id)"
-        class="w-[80px] bg-red-500 rounded py-1 text-center text-white font-medium">Delete</button>
-      <button class="w-[80px] bg-blue-500 rounded py-1 text-center text-white font-medium">
+        class="w-[80px] bg-red-500 rounded py-1 text-center text-white font-medium">
+        Delete
+      </button>
+      <button @click="$store.commit('openChangingModal', position)"
+        class="w-[80px] bg-blue-500 rounded py-1 text-center text-white font-medium">
         Change
       </button>
     </div>

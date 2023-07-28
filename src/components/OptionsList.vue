@@ -1,15 +1,29 @@
 <template>
-  <option class="bg-blue-50 border" value="option.caption" v-for="option in $props.options">
+  <option :selected="option._id === activeOption" class="bg-blue-50 border" :value="option._id" v-for="option in options">
     {{ option.accountNumber }}
     {{ option.caption }}
   </option>
 </template>
 
-<script setup lang="ts">
-import { ICurrency, IAccountNumber, IPaymentMethod } from "./../types.ts";
-interface IProps {
-  options: ICurrency[] | IAccountNumber[] | IPaymentMethod[];
-}
+<script lang="ts">
+import { defineComponent } from "vue";
+// import { ICurrency, IAccountNumber, IPaymentMethod } from "./../types.ts";
 
-const props = defineProps<IProps>();
+// import { mapMutations, mapState } from "vuex";
+
+export default defineComponent({
+  props: {
+    options: {
+      type: Array,
+      default: () => [],
+    },
+    activeOption: {
+      type: Number,
+    },
+  },
+  setup(props) {
+    props.options;
+    props.activeOption;
+  },
+});
 </script>
