@@ -1,7 +1,7 @@
 <template>
   <div class="w-full container m-auto flex flex-col items-center py-5">
     <TotalAmount />
-    <div class="flex gap-3">
+    <div class="flex gap-3 flex-wrap max-w-[715px]">
       <PositionsList />
     </div>
     <ModalWindow />

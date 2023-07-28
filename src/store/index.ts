@@ -1,11 +1,10 @@
-import { IPosition } from "@/types";
+import { ICurrency, IPosition } from "@/types";
 import { createStore } from "vuex";
 import creatingModule from "./creatingModule";
 import fillingModule from "./fillingModule";
 
 export default createStore({
   state: {
-    totalAmount: 253252.0,
     positions: [
       {
         _id: 1,
@@ -27,9 +26,28 @@ export default createStore({
       },
     ],
   },
-  getters: {},
+  getters: {
+    getTotalAmount(state: any) {
+      const currencies = state.filling.currencies;
+
+      const totalAmount = state.positions.reduce(
+        (acc: number, position: IPosition) => {
+          const currency = currencies.find(
+            (currency: ICurrency) => currency._id === position.currencyId
+          );
+          console.log(currency);
+          acc += position.amount * currency.toEur;
+          return acc;
+        },
+        0
+      );
+
+      console.log(totalAmount);
+      return totalAmount;
+    },
+  },
   mutations: {
-    deletePosition: (state, id: number) => {
+    deletePosition: (state: any, id: number) => {
       state.positions = state.positions.filter(
         (position: IPosition) => position._id !== id
       );

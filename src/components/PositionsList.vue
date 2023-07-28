@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-blue-200 w-[350px]"
-    v-for="position in $store.state.positions">
+    v-for="(position, index) in $store.state.positions">
     <h4 class="bg-blue-500 text-white font-medium px-2.5 py-1.5 rounded">
-      Position {{ position._id }}
+      Position {{ ++index }}
     </h4>
 
     <div class="flex flex-col gap-1">
