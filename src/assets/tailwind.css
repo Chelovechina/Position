@@ -4,6 +4,35 @@
 
 @tailwind utilities;
 
-#app {
-  font-family: "Montserrat", sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.btn {
+  border: 1px solid #9e9e9e;
+}
+.btn > svg {
+  fill: #666666;
+}
+.btn:first-child {
+  border-right: none;
+}
+.btn:last-child {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.btn:hover {
+  border-color: #4a90e2;
+}
+.btn:disabled {
+  border-color: #cccccc;
+}
+.btn:disabled:hover > svg {
+  fill: #cccccc;
+}
+.btn:disabled > svg {
+  fill: #cccccc;
+}
+.btn:hover > svg {
+  fill: #4a90e2;
 }

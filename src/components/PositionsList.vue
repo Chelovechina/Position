@@ -1,53 +1,34 @@
 <template>
-  <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-blue-200 w-[350px]"
-    v-for="(position, index) in $store.state.positions">
-    <h4 class="bg-blue-500 text-white font-medium px-2.5 py-1.5 rounded">
-      Position {{ ++index }}
-    </h4>
-
-    <div class="flex flex-col gap-1">
-      <div class="flex flex-col items-center">
-        <p class="font-medium">Currency:</p>
-        <p>{{ $store.getters.getCurrency(position.currencyId).caption }}</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <p class="font-medium">Amount:</p>
-        <p>{{ position.amount }}</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <p class="font-medium">Account Number:</p>
-        <p>
-          {{
-            $store.getters.getAccountNumber(position.accountNumberId)
-              .accountNumber
-          }}
-          -
-          {{
-            $store.getters.getAccountNumber(position.accountNumberId).caption
-          }}
-        </p>
-      </div>
-      <div class="flex flex-col items-center">
-        <p class="font-medium">Payment Method:</p>
-        <p>{{ $store.getters.getPaymentMethod(position.paymentId).caption }}</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <p class="font-medium">Description:</p>
-        <p>{{ position.description }}</p>
-      </div>
-    </div>
-
-    <div class="flex gap-3">
-      <button @click="$store.commit('deletePosition', position._id)"
-        class="w-[80px] bg-red-500 rounded py-1 text-center text-white font-medium">
-        Delete
-      </button>
-      <button @click="$store.commit('openChangingModal', position)"
-        class="w-[80px] bg-blue-500 rounded py-1 text-center text-white font-medium">
-        Change
-      </button>
-    </div>
+  <div class="w-full" v-for="(position, index) in positions">
+    <position :key="position._id" :index="index" :position="position" />
   </div>
+  <position class="w-full" isNew :index="new" :position="newPosition" />
 </template>
 
-<script setup lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapState } from "vuex";
+import Position from "./Position.vue";
+
+export default defineComponent({
+  components: { Position },
+  data() {
+    return {
+      value: 1,
+      newPosition: {
+        _id: Date.now(),
+        currencyId: 1,
+        amount: 0,
+        accountNumberId: 1,
+        paymentId: 1,
+        description: "",
+      },
+    };
+  },
+  computed: {
+    ...mapState({
+      positions: (state: any) => state.positions,
+    }),
+  },
+});
+</script>

@@ -1,15 +1,11 @@
 <template>
-  <div class="w-full container m-auto flex flex-col items-center py-5">
+  <div class="w-full m-auto flex flex-col items-center px-[64px] py-[48px]">
     <TotalAmount />
-    <div class="flex gap-3 flex-wrap max-w-[715px]">
-      <PositionsList />
-    </div>
-    <ModalWindow />
+    <PositionsList />
   </div>
 </template>
 
 <script setup lang="ts">
 import TotalAmount from "./components/TotalAmount.vue";
 import PositionsList from "./components/PositionsList.vue";
-import ModalWindow from "./components/ModalWindow.vue";
 </script>

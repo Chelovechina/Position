@@ -64,18 +64,15 @@ export default {
     accounts: [
       {
         _id: 1,
-        caption: "Microsoft",
-        accountNumber: 25216125,
+        caption: "25216125 - Microsoft",
       },
       {
         _id: 2,
-        caption: "Google",
-        accountNumber: 76512642,
+        caption: "76512642 - Google",
       },
       {
         _id: 3,
-        caption: "Meta",
-        accountNumber: 92538215,
+        caption: "92538215 - Meta",
       },
     ],
     payments: [

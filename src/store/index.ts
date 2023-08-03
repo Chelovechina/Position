@@ -1,6 +1,5 @@
 import { ICurrency, IPosition } from "@/types";
 import { createStore } from "vuex";
-import creatingModule from "./creatingModule";
 import fillingModule from "./fillingModule";
 
 export default createStore({
@@ -35,14 +34,12 @@ export default createStore({
           const currency = currencies.find(
             (currency: ICurrency) => currency._id === position.currencyId
           );
-          console.log(currency);
-          acc += position.amount * currency.toEur;
+          acc += Number(position.amount) * currency.toEur;
           return acc;
         },
         0
       );
 
-      console.log(totalAmount);
       return totalAmount;
     },
   },
@@ -52,20 +49,17 @@ export default createStore({
         (position: IPosition) => position._id !== id
       );
     },
-    addPosition: (state: any, newPosition: IPosition) => {
+    savePosition: (state: any, newPosition: IPosition) => {
       const index = state.positions.findIndex(
         (position: IPosition) => position._id === newPosition._id
       );
       index !== -1
         ? (state.positions[index] = newPosition)
         : state.positions.push(newPosition);
-
-      state.creating.isModalOpen = false;
     },
   },
   actions: {},
   modules: {
     filling: fillingModule,
-    creating: creatingModule,
   },
 });

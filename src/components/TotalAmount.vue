@@ -1,13 +1,10 @@
 <template>
-  <div class="flex items-center gap-6 mb-5">
-    <h1 class="bg-blue-600 px-5 py-3 font-medium uppercase text-white text-2xl rounded-lg text-lg color-white">
+  <div
+    class="w-full h-[84px] flex items-center justify-center border-[1px] border-[#4A90E2] rounded-[5px] bg-[#d6e7fb] mb-[41px]">
+    <h1 class="text-xl text-[#4A90E2] font-medium uppercase">
       Total Amount: {{ $store.getters.getTotalAmount }} EUR
     </h1>
-    <button @click="$store.commit('openCreatingModal')"
-      class="bg-green-600 w-[40px] h-[40px] font-medium uppercase text-white text-2xl rounded-lg">
-      +
-    </button>
   </div>
 </template>
 
-<script setup lang="ts" />
+<script setup lang="ts"></script>
